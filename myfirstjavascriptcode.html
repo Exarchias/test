@@ -1,0 +1,113 @@
+<div dir="ltr" style="text-align: left;" trbidi="on">
+<div dir="ltr" style="text-align: left;" trbidi="on">
+Καλησπέρα μικρά αθώα κατσικάκια του διαδικτύου. Αυτό είναι το πρώτο μου πρόγραμμα. Παίξτε όσο θέλετε αλλά να θυμάστε ότι<b> δεν παίζουμε με πραγματικά λεφτά οκ</b>;<br />
+<form name="slots" onsubmit="rollem(); return false;">
+Ευρώ στην τσέπη σου: <input name="gold" readonly="" size="5" type="box" value="10" /><br />
+Βάζεις; (άλλα τόσα θα βάλω και εγώ): <input name="bet" size="5" type="box" /><br />
+Η ζαριά σου είναι: <input name="zariasou" readonly="" size="1" type="box" value="" /><br />
+Η ζαριά μου είναι: <input name="zariamou" readonly="" size="1" type="box" value="" /><br />
+<input type="submit" value="Ρίχνω ζάρι!" />
+    <input onclick="stopplay();" type="button" value="Έφυγαααα!" />
+    <input name="banner" readonly="" size="50" value="" />
+    </form>
+<script>
+startgold=10;
+document.slots.gold.value=startgold;
+
+function stopplay () {
+if (document.slots.gold.value < startgold) 
+ {alert("Έχασες "+ (startgold-document.slots.gold.value) +" νόστιμα ευρουλάκια.   ");}
+else  {alert("Κέρδισες "+ (document.slots.gold.value-startgold) +" νόστιμα ευρουλάκια. Και σε καλή μεριά!   ");}
+}
+
+function rollem () {
+if (document.slots.bet.value<1 || document.slots.bet.value == "") {alert("Θα βάλεις κανένα φράγκο;   "); return;}
+if (Math.floor(document.slots.gold.value) < Math.floor(document.slots.bet.value)) {alert("Προσπαθείς να βάλεις "+document.slots.bet.value+" Ευρώ. Σαν πολλά δεν βάζεις;"); return;}
+if (document.slots.bet.value>1) {document.slots.banner.value="Το στοίχημα είναι στα "+document.slots.bet.value+" ευρώ οκ;";}
+else {document.slots.banner.value="Bet is "+document.slots.bet.value+" gold piece";}
+counter=0;
+spinem();
+}
+
+
+function spinem() {
+window.userdice = Math.floor(Math.random()*6+1); 
+window.pcdice = Math.floor(Math.random()*6+1);
+document.slots.zariasou.value=userdice;
+document.slots.zariamou.value=pcdice;
+checkmatch();}
+
+
+
+function checkmatch() { 
+
+if (userdice > pcdice) 
+ {document.slots.banner.value="Κέρδισες "+Math.floor(document.slots.bet.value*1)+" νόστιμα ευρουλάκια. Και σε καλή μεριά!";
+  document.slots.gold.value=Math.floor(document.slots.gold.value)+Math.floor(document.slots.bet.value*1); }
+else if (userdice == pcdice)
+  {document.slots.banner.value="Ισοπαλία. Αντε πάμε ακόμη μία :) ";
+   document.slots.gold.value = Math.floor(document.slots.bet.value*0) + Math.floor(document.slots.gold.value);}
+else {document.slots.gold.value=document.slots.gold.value-document.slots.bet.value; 
+  document.slots.banner.value="Έχασες "+document.slots.bet.value+" νόστιμα ευρουλάκια. Κορόιδο!";}
+ }
+</script>
+</div>
+Εδώ είναι ο κώδικας :)<br />
+<textarea cols="50" id="holdtext" rows="10"><form name=slots onsubmit="rollem(); return false;">
+
+    Ευρώ στην τσέπη σου: <input readOnly type=box size=5 value=10 name=gold><br/>
+  
+    Βάζεις; (άλλα τόσα θα βάλω και εγώ): <input type=box size=5 name=bet><br/>
+    Η ζαριά σου είναι: <input readOnly type=box size=1 value="" name=zariasou><br/>
+    Η ζαριά μου είναι: <input readOnly type=box size=1 value="" name=zariamou><br/>
+    <input type=submit value="Ρίχνω ζάρι!">
+    <input onclick=stopplay(); type=button value="Έφυγαααα!">
+    <input readOnly size=50 
+   name=banner value="">
+    </form>
+<script>
+
+
+
+
+
+startgold=10;
+document.slots.gold.value=startgold;
+
+function stopplay () {
+if (document.slots.gold.value < startgold) 
+ {alert("Έχασες "+ (startgold-document.slots.gold.value) +" νόστιμα ευρουλάκια.   ");}
+else  {alert("Κέρδισες "+ (document.slots.gold.value-startgold) +" νόστιμα ευρουλάκια. Και σε καλή μεριά!   ");}
+}
+
+function rollem () {
+if (document.slots.bet.value<1 || document.slots.bet.value == "") {alert("Θα βάλεις κανένα φράγκο;   "); return;}
+if (Math.floor(document.slots.gold.value) < Math.floor(document.slots.bet.value)) {alert("Προσπαθείς να βάλεις "+document.slots.bet.value+" Ευρώ. Σαν πολλά δεν βάζεις;"); return;}
+if (document.slots.bet.value>1) {document.slots.banner.value="Το στοίχημα είναι στα "+document.slots.bet.value+" ευρώ οκ;";}
+else {document.slots.banner.value="Bet is "+document.slots.bet.value+" gold piece";}
+counter=0;
+spinem();
+}
+
+
+function spinem() {
+window.userdice = Math.floor(Math.random()*6+1); 
+window.pcdice = Math.floor(Math.random()*6+1);
+document.slots.zariasou.value=userdice;
+document.slots.zariamou.value=pcdice;
+checkmatch();}
+
+
+
+function checkmatch() { 
+
+if (userdice > pcdice) 
+ {document.slots.banner.value="Κέρδισες "+Math.floor(document.slots.bet.value*1)+" νόστιμα ευρουλάκια. Και σε καλή μεριά!";
+  document.slots.gold.value=Math.floor(document.slots.gold.value)+Math.floor(document.slots.bet.value*1); }
+else if (userdice == pcdice)
+  {document.slots.banner.value="Ισοπαλία. Αντε πάμε ακόμη μία :) ";
+   document.slots.gold.value = Math.floor(document.slots.bet.value*0) + Math.floor(document.slots.gold.value);}
+else {document.slots.gold.value=document.slots.gold.value-document.slots.bet.value; 
+  document.slots.banner.value="Έχασες "+document.slots.bet.value+" νόστιμα ευρουλάκια. Κορόιδο!";}
+ }
+</SCRIPT></textarea></div>
